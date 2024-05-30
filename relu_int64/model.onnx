@@ -1,0 +1,18 @@
+pytorch2.1.1:Ó
+/
+input/Cast_output_0/Cast"Cast*	
+to 
+-
+/Cast_output_0/Relu_output_0/Relu"Relu
+2
+/Relu_output_0output/Cast_1"Cast*	
+to 
+main_graphZ
+input
+
+
+b
+output
+
+
+B
