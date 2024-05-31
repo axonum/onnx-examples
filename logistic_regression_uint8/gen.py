@@ -17,14 +17,14 @@ class LogisticRegression(torch.nn.Module):
         x = self.linear(x)
         x = torch.sigmoid(x)
         # Round the output to 0 or 1
-        return torch.add(torch.mul(x >= 0.5, 1), torch.mul(x < 0.5, 0)).type(torch.int64)
+        return torch.add(torch.mul(x >= 0.5, 1), torch.mul(x < 0.5, 0)).type(torch.uint8)
     
 # Create the model
 model = LogisticRegression()
 model.eval()
 
 # Export the model
-input = torch.tensor([[-5,-4,-3,-2,-1,1,2,3,4,5]], dtype=torch.int64)
+input = torch.tensor([[0,1,2,3,4,5,6,7,8,9]], dtype=torch.uint8)
 torch.onnx.export(model, input, "model.onnx", export_params=True, opset_version=7, do_constant_folding=True, input_names = ['input'], output_names = ['output'], verbose=False)
 
 # Export sample input and output
