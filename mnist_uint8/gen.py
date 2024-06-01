@@ -11,10 +11,10 @@ torch.manual_seed(42)
 class Net(torch.nn.Module):
     def __init__(self):
         super(Net, self).__init__()
-        self.conv1 = torch.nn.Conv2d(1, 32, 3, 1)
-        self.conv2 = torch.nn.Conv2d(32, 64, 3, 1)
+        self.conv1 = torch.nn.Conv2d(1, 8, 5, 1)
+        self.conv2 = torch.nn.Conv2d(8, 16, 5, 1)
         self.dropout = torch.nn.Dropout(0.5)
-        self.fc = torch.nn.Linear(1600, 10)
+        self.fc = torch.nn.Linear(256, 10)
     
     def forward(self, x):
         # cast to float32
@@ -77,6 +77,7 @@ output = model(input.unsqueeze(0))
 
 # save input.bin
 input = input.detach().numpy()
+print(input)
 input.tofile("input.bin")
 print("Input: 0x"+input.data.hex())
 
